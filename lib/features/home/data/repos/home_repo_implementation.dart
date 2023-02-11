@@ -1,17 +1,32 @@
 import 'package:bookly/core/errors/failures.dart';
+import 'package:bookly/core/utils/dio_helper.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model_items.dart';
 import 'package:bookly/features/home/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 
 class HomeRepoImpl implements HomeRepo {
+  final DioHelper dioHelper;
+
+  HomeRepoImpl(this.dioHelper);
+
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks() {
-    // TODO: implement fetchBestSellerBooks
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookModelItems?>?>> fetchNewestBooks() async {
+    BookModel model;
+    try {
+      var data = await dioHelper.getData(
+          url:
+              'volumes?Filtering=free-ebooks&Sorting=newest&q=subject:programming');
+      model = BookModel.fromJson(data);
+      print(model.items![0]);
+      return right(model.items);
+    } catch (e) {
+      return left(ServerFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturesBooks() {
+  Future<Either<Failure, List<BookModelItems?>?>> fetchFeaturesBooks() {
     // TODO: implement fetchFeaturesBooks
     throw UnimplementedError();
   }
