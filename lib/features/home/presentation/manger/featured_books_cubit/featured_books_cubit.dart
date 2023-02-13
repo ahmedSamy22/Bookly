@@ -15,8 +15,10 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksStates> {
     var response = await homeRepo.fetchFeaturesBooks();
 
     response.fold((failure) {
+      print(failure.errMessage);
       emit(FeaturedBooksErrorState(failure.errMessage));
     }, (books) {
+      print(books?.length);
       emit(FeaturedBooksSuccessState(books));
     });
   }
