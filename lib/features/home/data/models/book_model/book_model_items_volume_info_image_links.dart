@@ -6,16 +6,16 @@ class BookModelItemsVolumeInfoImageLinks {
 }
 */
 
-  String? smallThumbnail;
-  String? thumbnail;
+  late String smallThumbnail;
+  late String thumbnail;
 
   BookModelItemsVolumeInfoImageLinks({
-    this.smallThumbnail,
-    this.thumbnail,
+    required this.smallThumbnail,
+    required this.thumbnail,
   });
   BookModelItemsVolumeInfoImageLinks.fromJson(Map<String, dynamic> json) {
-    smallThumbnail = json['smallThumbnail']?.toString();
-    thumbnail = json['thumbnail']?.toString();
+    smallThumbnail = json['smallThumbnail'].toString();
+    thumbnail = json['thumbnail'].toString();
   }
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class DioHelper {
-  final _baseUrl = 'https://www.googleapis.com/books/v1';
+  final _baseUrl = 'https://www.googleapis.com/books/v1/';
   final Dio dio;
 
   DioHelper(this.dio);

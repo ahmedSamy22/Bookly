@@ -25,12 +25,12 @@ class SearchViewBody extends StatelessWidget {
               style: Styles.textStyle18,
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) => const BestSellerListViewItem(),
-              itemCount: 10,
-            ),
-          ),
+          // Expanded(
+          //   child: ListView.builder(
+          //     itemBuilder: (context, index) => const BestSellerListViewItem(),
+          //     itemCount: 10,
+          //   ),
+          // ),
         ],
       ),
     );

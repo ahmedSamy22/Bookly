@@ -83,7 +83,7 @@ class BookModelItems {
   String? id;
   String? etag;
   String? selfLink;
-  BookModelItemsVolumeInfo? volumeInfo;
+  late BookModelItemsVolumeInfo volumeInfo;
   BookModelItemsSaleInfo? saleInfo;
   BookModelItemsAccessInfo? accessInfo;
   BookModelItemsSearchInfo? searchInfo;
@@ -93,19 +93,18 @@ class BookModelItems {
     this.id,
     this.etag,
     this.selfLink,
-    this.volumeInfo,
+    required this.volumeInfo,
     this.saleInfo,
     this.accessInfo,
     this.searchInfo,
   });
+
   BookModelItems.fromJson(Map<String, dynamic> json) {
     kind = json['kind']?.toString();
     id = json['id']?.toString();
     etag = json['etag']?.toString();
     selfLink = json['selfLink']?.toString();
-    volumeInfo = (json['volumeInfo'] != null)
-        ? BookModelItemsVolumeInfo.fromJson(json['volumeInfo'])
-        : null;
+    volumeInfo = BookModelItemsVolumeInfo.fromJson(json['volumeInfo']);
     saleInfo = (json['saleInfo'] != null)
         ? BookModelItemsSaleInfo.fromJson(json['saleInfo'])
         : null;

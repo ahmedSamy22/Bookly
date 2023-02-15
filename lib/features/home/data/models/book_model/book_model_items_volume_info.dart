@@ -64,7 +64,7 @@ class BookModelItemsVolumeInfo {
   bool? allowAnonLogging;
   String? contentVersion;
   BookModelItemsVolumeInfoPanelizationSummary? panelizationSummary;
-  BookModelItemsVolumeInfoImageLinks? imageLinks;
+  late BookModelItemsVolumeInfoImageLinks imageLinks;
   String? language;
   String? previewLink;
   String? infoLink;
@@ -87,7 +87,7 @@ class BookModelItemsVolumeInfo {
     this.allowAnonLogging,
     this.contentVersion,
     this.panelizationSummary,
-    this.imageLinks,
+    required this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
@@ -136,9 +136,8 @@ class BookModelItemsVolumeInfo {
         ? BookModelItemsVolumeInfoPanelizationSummary.fromJson(
             json['panelizationSummary'])
         : null;
-    imageLinks = (json['imageLinks'] != null)
-        ? BookModelItemsVolumeInfoImageLinks.fromJson(json['imageLinks'])
-        : null;
+    imageLinks =
+        BookModelItemsVolumeInfoImageLinks.fromJson(json['imageLinks']);
     language = json['language']?.toString();
     previewLink = json['previewLink']?.toString();
     infoLink = json['infoLink']?.toString();
