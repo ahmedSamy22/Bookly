@@ -1,5 +1,4 @@
 import 'package:bookly/core/utils/app_router.dart';
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model_items.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -31,7 +30,8 @@ class BestSellerListViewItem extends StatelessWidget {
                 height: 120,
                 width: 90,
                 fit: BoxFit.fill,
-                imageUrl: item.volumeInfo.imageLinks.thumbnail,
+                imageUrl: item.volumeInfo.imageLinks?.thumbnail ??
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxi6-CoWE4o6BlONAowkhTEeEVBjbo9C_aH0mq0aKA5ZtAEt-R8U4oMVKbCDcHquktvT0&usqp=CAU',
                 errorWidget: (context, url, error) =>
                     const Icon(Icons.broken_image),
               ),

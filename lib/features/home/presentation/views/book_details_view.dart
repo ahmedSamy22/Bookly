@@ -3,8 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'widgets/book_details_view_body.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({Key? key}) : super(key: key);
+  const BookDetailsView({
+    Key? key,
+  }) : super(key: key);
 
+  //final BookModelItems item;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,9 @@ class BookDetailsView extends StatelessWidget {
           ),
         ],
       ),
-      body: const BookDetailsViewBody(),
+      body: const BookDetailsViewBody(
+          // item: item,
+          ),
     );
   }
 }

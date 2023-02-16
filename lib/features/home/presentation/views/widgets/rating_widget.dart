@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class RatingWidget extends StatelessWidget {
   final int? ratingsCount;
-  final double? avgRating;
+  final num? avgRating;
   const RatingWidget({
     Key? key,
-    required this.ratingsCount,
-    required this.avgRating,
+    this.ratingsCount,
+    this.avgRating,
   }) : super(key: key);
 
   @override

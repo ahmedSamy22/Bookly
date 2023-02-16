@@ -17,7 +17,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await dioHelper.getData(
           url:
-              'volumes?Filtering=free-ebooks&Sorting=newest&q=subject:programming');
+              'volumes?Filtering=free-ebooks&Sorting=newest&q=computer science');
       model = BookModel.fromJson(data);
       print(model.items![0]?.volumeInfo.title);
       return right(model.items);
@@ -36,7 +36,25 @@ class HomeRepoImpl implements HomeRepo {
       var data = await dioHelper.getData(
           url: 'volumes?Filtering=free-ebooks&q=subject:programming');
       model = BookModel.fromJson(data);
-      print(model.items![0]?.volumeInfo.imageLinks.thumbnail);
+      return right(model.items);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookModelItems?>?>> fetchSimilarBooks(
+      {required String category}) async {
+    BookModel model;
+    try {
+      var data = await dioHelper.getData(
+          url:
+              'volumes?Filtering=free-ebooks&Sorting=Relevance&q=subject:programming');
+
+      model = BookModel.fromJson(data);
       return right(model.items);
     } catch (e) {
       if (e is DioError) {

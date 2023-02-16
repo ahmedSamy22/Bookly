@@ -1,11 +1,14 @@
-import 'package:bookly/features/home/presentation/views/widgets/rating_widget.dart';
 import 'package:flutter/material.dart';
 import 'book_details_section.dart';
 import 'books_action_widget.dart';
 import 'similar_books_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({Key? key}) : super(key: key);
+  const BookDetailsViewBody({
+    Key? key,
+  }) : super(key: key);
+
+  // final BookModelItems item;
 
   @override
   Widget build(BuildContext context) {

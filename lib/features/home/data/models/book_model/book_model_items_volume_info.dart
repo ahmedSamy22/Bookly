@@ -58,13 +58,13 @@ class BookModelItemsVolumeInfo {
   int? pageCount;
   String? printType;
   List<String?>? categories;
-  double? averageRating;
+  num? averageRating;
   int? ratingsCount;
   String? maturityRating;
   bool? allowAnonLogging;
   String? contentVersion;
   BookModelItemsVolumeInfoPanelizationSummary? panelizationSummary;
-  late BookModelItemsVolumeInfoImageLinks imageLinks;
+  BookModelItemsVolumeInfoImageLinks? imageLinks;
   String? language;
   String? previewLink;
   String? infoLink;
@@ -127,7 +127,7 @@ class BookModelItemsVolumeInfo {
       });
       categories = arr0;
     }
-    averageRating = json['averageRating']?.toDouble();
+    averageRating = json['averageRating'];
     ratingsCount = json['ratingsCount']?.toInt();
     maturityRating = json['maturityRating']?.toString();
     allowAnonLogging = json['allowAnonLogging'];
@@ -136,8 +136,9 @@ class BookModelItemsVolumeInfo {
         ? BookModelItemsVolumeInfoPanelizationSummary.fromJson(
             json['panelizationSummary'])
         : null;
-    imageLinks =
-        BookModelItemsVolumeInfoImageLinks.fromJson(json['imageLinks']);
+    imageLinks = (json['imageLinks'] != null)
+        ? BookModelItemsVolumeInfoImageLinks.fromJson(json['imageLinks'])
+        : null;
     language = json['language']?.toString();
     previewLink = json['previewLink']?.toString();
     infoLink = json['infoLink']?.toString();
