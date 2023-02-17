@@ -6,8 +6,8 @@ class RatingWidget extends StatelessWidget {
   final num? avgRating;
   const RatingWidget({
     Key? key,
-    this.ratingsCount,
-    this.avgRating,
+    required this.ratingsCount,
+    required this.avgRating,
   }) : super(key: key);
 
   @override
@@ -15,10 +15,16 @@ class RatingWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(
-          Icons.star,
-          color: Colors.amber,
-        ),
+        if (ratingsCount != 0)
+          const Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
+        if (ratingsCount == 0)
+          const Icon(
+            Icons.star,
+            color: Colors.grey,
+          ),
         const SizedBox(
           width: 5.0,
         ),

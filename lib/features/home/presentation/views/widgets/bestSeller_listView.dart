@@ -1,5 +1,4 @@
 import 'package:bookly/core/custom_widgets/custom_error_widget.dart';
-import 'package:bookly/features/home/data/models/book_model/book_model_items.dart';
 import 'package:bookly/features/home/presentation/manger/newest_books_cubit/NewestBooksCubit.dart';
 import 'package:bookly/features/home/presentation/manger/newest_books_cubit/newest_books_states.dart';
 import 'package:flutter/material.dart';

@@ -52,7 +52,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await dioHelper.getData(
           url:
-              'volumes?Filtering=free-ebooks&Sorting=Relevance&q=subject:programming');
+              'volumes?Filtering=free-ebooks&Sorting=Relevance&q=subject:$category');
 
       model = BookModel.fromJson(data);
       return right(model.items);

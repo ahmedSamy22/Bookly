@@ -1,12 +1,12 @@
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model_items.dart';
 import 'package:flutter/material.dart';
-
 import 'features_listView_item.dart';
 import 'rating_widget.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({Key? key}) : super(key: key);
+  const BookDetailsSection({Key? key, required this.item}) : super(key: key);
+  final BookModelItems item;
 
   @override
   Widget build(BuildContext context) {
@@ -16,26 +16,31 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: width * 0.25, vertical: 30.0),
-          child:
-              const FeaturesListViewItem(image: AssetsData.features_list_item),
+          child: FeaturesListViewItem(
+              image: item.volumeInfo.imageLinks?.thumbnail ??
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxi6-CoWE4o6BlONAowkhTEeEVBjbo9C_aH0mq0aKA5ZtAEt-R8U4oMVKbCDcHquktvT0&usqp=CAU'),
         ),
-        const Text(
-          'The Jungle Book',
+        Text(
+          item.volumeInfo.title!,
           style: Styles.textStyle30,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 10,
         ),
-        const Text(
-          'Rudyard Kipling',
+        Text(
+          item.volumeInfo.authors![0]!,
           style: Styles.captionText18,
         ),
         const SizedBox(
           height: 10,
         ),
-        // const RatingWidget(),
+        RatingWidget(
+          avgRating: item.volumeInfo.averageRating ?? 0,
+          ratingsCount: item.volumeInfo.ratingsCount ?? 0,
+        ),
       ],
     );
   }

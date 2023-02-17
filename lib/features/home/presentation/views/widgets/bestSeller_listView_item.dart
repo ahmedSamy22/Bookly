@@ -18,7 +18,7 @@ class BestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookRouteKey);
+        GoRouter.of(context).push(AppRouter.kBookRouteKey, extra: item);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
@@ -70,11 +70,10 @@ class BestSellerListViewItem extends StatelessWidget {
                           style: Styles.textStyle15,
                         ),
                         const Spacer(),
-                        if (item.volumeInfo.averageRating != null)
-                          RatingWidget(
-                            avgRating: item.volumeInfo.averageRating,
-                            ratingsCount: item.volumeInfo.ratingsCount,
-                          ),
+                        RatingWidget(
+                          avgRating: item.volumeInfo.averageRating ?? 0,
+                          ratingsCount: item.volumeInfo.ratingsCount ?? 0,
+                        ),
                       ],
                     ),
                   ],
