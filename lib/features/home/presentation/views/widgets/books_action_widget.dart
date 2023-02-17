@@ -24,7 +24,7 @@ class BooksAction extends StatelessWidget {
               color: Colors.white,
               onPressed: () {},
               child: Text(
-                '19.99 €',
+                'free',
                 style: Styles.textStyle15.copyWith(color: Colors.black),
               ),
             ),

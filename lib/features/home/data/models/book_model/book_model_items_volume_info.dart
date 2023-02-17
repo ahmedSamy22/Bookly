@@ -57,7 +57,7 @@ class BookModelItemsVolumeInfo {
   BookModelItemsVolumeInfoReadingModes? readingModes;
   int? pageCount;
   String? printType;
-  List<String?>? categories;
+  List<String?> categories = ['programming'];
   num? averageRating;
   int? ratingsCount;
   String? maturityRating;
@@ -80,7 +80,7 @@ class BookModelItemsVolumeInfo {
     this.readingModes,
     this.pageCount,
     this.printType,
-    this.categories,
+    required this.categories,
     this.averageRating,
     this.ratingsCount,
     this.maturityRating,
@@ -120,6 +120,7 @@ class BookModelItemsVolumeInfo {
     pageCount = json['pageCount']?.toInt();
     printType = json['printType']?.toString();
     if (json['categories'] != null) {
+      categories = [];
       final v = json['categories'];
       final arr0 = <String>[];
       v.forEach((v) {
@@ -127,6 +128,7 @@ class BookModelItemsVolumeInfo {
       });
       categories = arr0;
     }
+
     averageRating = json['averageRating'];
     ratingsCount = json['ratingsCount']?.toInt();
     maturityRating = json['maturityRating']?.toString();
@@ -174,7 +176,7 @@ class BookModelItemsVolumeInfo {
     if (categories != null) {
       final v = categories;
       final arr0 = [];
-      v!.forEach((v) {
+      v.forEach((v) {
         arr0.add(v);
       });
       data['categories'] = arr0;

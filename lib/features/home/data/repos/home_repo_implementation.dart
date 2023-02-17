@@ -51,8 +51,7 @@ class HomeRepoImpl implements HomeRepo {
     BookModel model;
     try {
       var data = await dioHelper.getData(
-          url:
-              'volumes?Filtering=free-ebooks&Sorting=Relevance&q=subject:$category');
+          url: 'volumes?Filtering=free-ebooks&q=$category');
 
       model = BookModel.fromJson(data);
       return right(model.items);
