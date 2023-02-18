@@ -62,3 +62,27 @@ CustomTransitionPage buildPageWithFadeTransition<T>({
         );
       });
 }
+
+CustomTransitionPage buildPageWithFadeAndScaleTransition<T>({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<T>(
+      key: state.pageKey,
+      child: child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var tween = Tween(
+          begin: 0.0,
+          end: 1.0,
+        );
+
+        return FadeTransition(
+          opacity: animation,
+          child: ScaleTransition(
+            scale: animation.drive(tween),
+            child: child,
+          ),
+        );
+      });
+}

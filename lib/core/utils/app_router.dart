@@ -32,7 +32,8 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kBookRouteKey,
-        pageBuilder: (context, state) => buildPageWithScaleTransition<void>(
+        pageBuilder: (context, state) =>
+            buildPageWithFadeAndScaleTransition<void>(
           context: context,
           state: state,
           child: BlocProvider(
