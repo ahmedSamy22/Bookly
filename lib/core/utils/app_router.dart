@@ -5,11 +5,11 @@ import 'package:bookly/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly/features/home/presentation/views/home_view.dart';
 import 'package:bookly/features/search/presentation/views/search_view.dart';
 import 'package:bookly/features/splash/presentation/views/splash_view.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/data/repos/home_repo_implementation.dart';
+import 'custom_transition_page.dart';
 
 abstract class AppRouter {
   static String kHomeRouteKey = '/homeView';
@@ -24,20 +24,32 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kHomeRouteKey,
-        builder: (context, state) => const HomeView(),
+        pageBuilder: (context, state) => buildPageWithSlideTransition<void>(
+          context: context,
+          state: state,
+          child: const HomeView(),
+        ),
       ),
       GoRoute(
         path: kBookRouteKey,
-        builder: (context, state) => BlocProvider(
-            create: (BuildContext context) =>
-                SimilarBooksCubit(getIt.get<HomeRepoImpl>()),
+        pageBuilder: (context, state) => buildPageWithSlideTransition<void>(
+          context: context,
+          state: state,
+          child: BlocProvider(
+            create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImpl>()),
             child: BookDetailsView(
               item: state.extra as BookModelItems,
-            )),
+            ),
+          ),
+        ),
       ),
       GoRoute(
         path: kSearchRouteKey,
-        builder: (context, state) => const SearchView(),
+        pageBuilder: (context, state) => buildPageWithSlideTransition<void>(
+          context: context,
+          state: state,
+          child: const SearchView(),
+        ),
       ),
     ],
   );
