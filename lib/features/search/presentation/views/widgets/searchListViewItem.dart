@@ -1,0 +1,84 @@
+import 'package:bookly/core/utils/app_router.dart';
+import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model_items.dart';
+import 'package:bookly/features/home/presentation/views/widgets/rating_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class SearchListViewItem extends StatelessWidget {
+  final BookModelItems item;
+  const SearchListViewItem({Key? key, required this.item}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.kBookRouteKey, extra: item);
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: CachedNetworkImage(
+                height: 120,
+                width: 90,
+                fit: BoxFit.fill,
+                imageUrl: item.volumeInfo.imageLinks?.thumbnail ??
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxi6-CoWE4o6BlONAowkhTEeEVBjbo9C_aH0mq0aKA5ZtAEt-R8U4oMVKbCDcHquktvT0&usqp=CAU',
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.broken_image),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: Text(
+                        item.volumeInfo.title ?? 'Undefined title',
+                        style: Styles.textStyle20,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      item.volumeInfo.authors?[0] ?? 'Unknown author',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Styles.captionText14,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          'free',
+                          style: Styles.textStyle15,
+                        ),
+                        const Spacer(),
+                        RatingWidget(
+                          avgRating: item.volumeInfo.averageRating ?? 0,
+                          ratingsCount: item.volumeInfo.ratingsCount ?? 0,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

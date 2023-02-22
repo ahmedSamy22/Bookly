@@ -1,4 +1,5 @@
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/search/presentation/views/widgets/search_ListView.dart';
 import 'package:flutter/material.dart';
 import 'custom_search_field.dart';
 
@@ -23,12 +24,7 @@ class SearchViewBody extends StatelessWidget {
               style: Styles.textStyle18,
             ),
           ),
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemBuilder: (context, index) => const BestSellerListViewItem(),
-          //     itemCount: 10,
-          //   ),
-          // ),
+          SearchListView(),
         ],
       ),
     );

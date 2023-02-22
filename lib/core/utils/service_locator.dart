@@ -1,5 +1,6 @@
 import 'package:bookly/core/utils/dio_helper.dart';
 import 'package:bookly/features/home/data/repos/home_repo_implementation.dart';
+import 'package:bookly/features/search/data/repos/search_repo_implementation.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -13,6 +14,10 @@ void setupServiceLocator() {
   );
 
   getIt.registerSingleton<HomeRepoImpl>(HomeRepoImpl(
+    getIt.get<DioHelper>(),
+  ));
+
+  getIt.registerSingleton<SearchRepoImpl>(SearchRepoImpl(
     getIt.get<DioHelper>(),
   ));
 }

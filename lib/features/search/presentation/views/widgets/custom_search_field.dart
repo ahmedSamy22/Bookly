@@ -1,4 +1,6 @@
+import 'package:bookly/features/search/presentation/manger/search_cubit/SearchBooksCubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomSearchField extends StatelessWidget {
@@ -8,7 +10,9 @@ class CustomSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var searchController = TextEditingController();
     return TextField(
+      controller: searchController,
       decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
@@ -22,7 +26,10 @@ class CustomSearchField extends StatelessWidget {
         ),
         hintText: 'Search',
         suffixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<SearchBooksCubit>(context)
+                .fetchSearchBooks(category: searchController.text);
+          },
           icon: const Opacity(
             opacity: 0.8,
             child: Icon(

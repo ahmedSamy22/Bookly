@@ -3,6 +3,8 @@ import 'package:bookly/features/home/data/models/book_model/book_model_items.dar
 import 'package:bookly/features/home/presentation/manger/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly/features/home/presentation/views/home_view.dart';
+import 'package:bookly/features/search/data/repos/search_repo_implementation.dart';
+import 'package:bookly/features/search/presentation/manger/search_cubit/SearchBooksCubit.dart';
 import 'package:bookly/features/search/presentation/views/search_view.dart';
 import 'package:bookly/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,7 +51,10 @@ abstract class AppRouter {
         pageBuilder: (context, state) => buildPageWithSlideTransition<void>(
           context: context,
           state: state,
-          child: const SearchView(),
+          child: BlocProvider(
+              create: (context) =>
+                  SearchBooksCubit(getIt.get<SearchRepoImpl>()),
+              child: const SearchView()),
         ),
       ),
     ],
