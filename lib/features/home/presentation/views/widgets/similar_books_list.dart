@@ -19,8 +19,9 @@ class SimilarBooksList extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(top: 20.0, bottom: 20.0, left: 30.0),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.22,
               child: ListView.separated(
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => FeaturesListViewItem(
                     image: state
