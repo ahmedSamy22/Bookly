@@ -94,7 +94,10 @@ class BookModelItemsVolumeInfo {
     this.canonicalVolumeLink,
   });
   BookModelItemsVolumeInfo.fromJson(Map<String, dynamic> json) {
-    title = json['title']?.toString();
+    if (json['title']?.toString() != null) {
+      title = json['title']?.toString();
+    }
+
     if (json['authors'] != null) {
       final v = json['authors'];
       final arr0 = <String>[];

@@ -31,7 +31,7 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         Text(
-          item.volumeInfo.title!,
+          item.volumeInfo.title ?? 'Undefined Title',
           style: Styles.textStyle30,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
@@ -41,7 +41,7 @@ class BookDetailsSection extends StatelessWidget {
           height: 10,
         ),
         Text(
-          item.volumeInfo.authors![0]!,
+          item.volumeInfo.authors?[0] ?? 'Unknown Author',
           style: Styles.captionText18,
         ),
         const SizedBox(
