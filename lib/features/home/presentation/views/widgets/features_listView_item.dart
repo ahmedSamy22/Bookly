@@ -12,13 +12,10 @@ class FeaturesListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
-      child: AspectRatio(
-        aspectRatio: 1.5 / 2.2,
-        child: CachedNetworkImage(
-          fit: BoxFit.fill,
-          imageUrl: image,
-          errorWidget: (context, url, error) => const Icon(Icons.broken_image),
-        ),
+      child: CachedNetworkImage(
+        fit: BoxFit.fill,
+        imageUrl: image,
+        errorWidget: (context, url, error) => const Icon(Icons.broken_image),
       ),
     );
   }

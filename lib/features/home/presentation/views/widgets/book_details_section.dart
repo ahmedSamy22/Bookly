@@ -1,3 +1,5 @@
+import 'package:bookly/core/responsive/device_type.dart';
+import 'package:bookly/core/responsive/get_device_type.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model_items.dart';
 import 'package:flutter/material.dart';
@@ -10,15 +12,23 @@ class BookDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    var mediaQueryData = MediaQuery.of(context);
+    print(getDeviceType(mediaQueryData));
     return Column(
       children: [
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: width * 0.25, vertical: 30.0),
-          child: FeaturesListViewItem(
-              image: item.volumeInfo.imageLinks?.thumbnail ??
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxi6-CoWE4o6BlONAowkhTEeEVBjbo9C_aH0mq0aKA5ZtAEt-R8U4oMVKbCDcHquktvT0&usqp=CAU'),
+          padding: const EdgeInsets.symmetric(vertical: 30.0),
+          child: SizedBox(
+            width: (getDeviceType(mediaQueryData) == DeviceType.Phone)
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.9,
+            child: AspectRatio(
+              aspectRatio: 1.5 / 2.1,
+              child: FeaturesListViewItem(
+                  image: item.volumeInfo.imageLinks?.thumbnail ??
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxi6-CoWE4o6BlONAowkhTEeEVBjbo9C_aH0mq0aKA5ZtAEt-R8U4oMVKbCDcHquktvT0&usqp=CAU'),
+            ),
+          ),
         ),
         Text(
           item.volumeInfo.title!,
