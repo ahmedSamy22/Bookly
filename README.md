@@ -1,22 +1,9 @@
 # bookly
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
+## Screenshots
 
 <img src="https://user-images.githubusercontent.com/50297806/220133760-57378230-6287-4bcf-a7b2-bec197dcc95a.png" align="left" style=" width:400px ; height:800px "  >
 <img src="https://user-images.githubusercontent.com/50297806/220133810-56e47f75-c6ca-412b-9867-92180a58ccbd.png" align="right" style=" width:400px ; height:800px "  >
 
-
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
