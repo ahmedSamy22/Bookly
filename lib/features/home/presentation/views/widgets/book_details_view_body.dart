@@ -14,6 +14,7 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(item.volumeInfo.previewLink);
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
@@ -24,7 +25,7 @@ class BookDetailsViewBody extends StatelessWidget {
               BookDetailsSection(
                 item: item,
               ),
-              const BooksAction(),
+              BooksAction(item: item),
               SimilarBooksSection(
                 item: item,
               ),

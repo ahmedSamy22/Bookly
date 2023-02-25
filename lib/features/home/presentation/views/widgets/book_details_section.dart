@@ -13,7 +13,7 @@ class BookDetailsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQueryData = MediaQuery.of(context);
-    print(getDeviceType(mediaQueryData));
+
     return Column(
       children: [
         Padding(
